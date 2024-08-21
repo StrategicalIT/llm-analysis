@@ -8,11 +8,13 @@ from llm_analysis.config import (ParallelismConfig, get_dtype_config_by_name,
 gpu_name = "a100-sxm-80gb"
 dtype_name = "w16a16e16"
 model_name = "upstage/Llama-2-70b-instruct-v2"
+canonical_name = model_name.replace("/", "_")
 tp_size = 2
 cost_per_gpu_hour = 2.21
-flops_efficiency = 0.6
-hbm_memory_efficiency = 0.6
-output_file = "infer_cursor_compare.csv"
+flops_efficiency = 0.7
+hbm_memory_efficiency = 0.9
+# output_file = "infer_cursor_compare.csv"
+output_file = f'{gpu_name} TP Size {tp_size} {canonical_name}.csv'
 
 analysis = LLMAnalysis(
     get_model_config_by_name(model_name),
