@@ -47,20 +47,11 @@ Check the example use cases. With llm-analysis, you can do such analysis in minu
 - [Megatron Turing NLG 530B](examples/megatron-turing-nlg)
 - [FasterTransformer](examples/fastertransformer/)
 
-## Quick Start
-
-- To install llm-analysis from pypi:
-  ```sh
-  pip install llm-analysis
-  ```
-
-- To install the latest development build:
+- To install this development build:
 
   ```sh
-  pip install --upgrade git+https://github.com/cli99/llm-analysis.git@main
+  pip install --upgrade git+https://github.com/strategicalit/llm-analysis.git@main
   ```
-
-- To install from source, clone the repo and run `pip install .` or `poetry install` (install [poetry](https://python-poetry.org/) by `pip install poetry`).
 
 ### Using the `LLMAnalysis` class
 
