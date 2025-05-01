@@ -1,0 +1,11 @@
+{
+    "name": "l40s-pcie-48gb",
+    "mem_per_GPU_in_GB": 48,
+    "hbm_bandwidth_in_GB_per_sec": 864,
+    "intra_node_bandwidth_in_GB_per_sec": 128,
+    "intra_node_min_message_latency": 8e-06,
+    "peak_fp16_TFLOPS": 733,
+    "peak_i8_TFLOPS": 1466,
+    "peak_i4_TFLOPS": 1466,
+    "inter_node_bandwidth_in_GB_per_sec": 128
+}

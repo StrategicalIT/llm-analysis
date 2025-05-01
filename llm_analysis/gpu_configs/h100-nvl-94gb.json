@@ -1,0 +1,11 @@
+{
+    "name": "h100-nvl-94gb",
+    "mem_per_GPU_in_GB": 94,
+    "hbm_bandwidth_in_GB_per_sec": 3938,
+    "intra_node_bandwidth_in_GB_per_sec": 600,
+    "intra_node_min_message_latency": 8e-06,
+    "peak_fp16_TFLOPS": 1671,
+    "peak_i8_TFLOPS": 3341,
+    "peak_i4_TFLOPS": 3341,
+    "inter_node_bandwidth_in_GB_per_sec": 400
+}

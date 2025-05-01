@@ -1,0 +1,16 @@
+{
+    "num_key_value_heads": 8,
+    "intermediate_size": 14336,
+    "hidden_size": 4096,
+    "initializer_range": 0.02,
+    "rms_norm_eps": 1e-05,
+    "max_position_embeddings": 8192,
+    "hidden_act": "silu",
+    "num_attention_heads": 32,
+    "num_hidden_layers": 40,
+    "rope_scaling": null,
+    "rope_theta": 500000.0,
+    "tie_word_embeddings": false,
+    "vocab_size": 153856,
+    "model_type": "llama"
+}
