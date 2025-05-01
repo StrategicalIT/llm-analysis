@@ -327,6 +327,20 @@ def populate_model_and_gpu_configs() -> None:
     )
 
 
+def reformat_model_dict(model_config, filename):
+    """Take in a new format model config and return an old format one compatible with the library"""
+    #ModelConfig instantiation fails because the schema has changed since the last repo update
+    #These are the keys that are speficied in the ModelConfig class definition
+    valid_keys = ["name", "num_layers", "n_head", "hidden_dim", "vocab_size", "max_seq_len", "num_key_value_heads", "num_key_value_groups", "ffn_embed_dim", "expansion_ratio", "model_type", "moe_num_experts", "moe_top_k", "mlp_gated_linear_units"]
+
+    #The new schema presents the following changes
+    #  - name is not present, but I can derive it from the config.json file name
+    #  - hidden_dim has been renamed to hidden_size
+    #  - n_head has been renamed to num_attention_heads
+    #  - num_layers has been renamed to num_hidden_layers
+    #Only do this if it is a new config.json, if the key ''hidden_size' exists
+
+
 def list_model_configs() -> None:
     """List all predefined model configs."""
     logger.info(model_configs.keys())
@@ -350,6 +364,8 @@ def get_model_config_by_name(name_or_path: str) -> ModelConfig:
         try:
             with open(name_or_path, "r") as f:
                 config_json = json.load(f)
+                #the following line added to help deal with huggingface model config schema changes
+                config_json = reformat_model_dict(config_json, name_or_path)
                 config = ModelConfig(**config_json)
                 if config.name not in model_configs:
                     model_configs[config.name] = config
