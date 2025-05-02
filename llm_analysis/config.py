@@ -340,8 +340,23 @@ def reformat_model_dict(model_config, filename):
     #  - num_layers has been renamed to num_hidden_layers
     #Only do this if it is a new config.json, if the key ''hidden_size' exists
 
+    ### First, let's create the new keys
+    model_config['name'] = filename.split(".")[0]
+    model_config['hidden_dim'] = model_config['hidden_size']
+    model_config['n_head'] = model_config['num_attention_heads']
+    model_config['num_layers'] = model_config['num_hidden_layers']
+    model_config['max_seq_len'] = model_config['max_position_embeddings'] #if hasattr(model_config, "max_position_embeddings") else None
 
-def list_model_configs() -> None:
+    ### Finally, let's get rid of any keys that are not part of the ModelConfig class
+    for k in list(model_config.keys()): # Dictionary cannot change size while iterating over it, hence we iterate over a list of its keys
+        if k not in valid_keys:
+            del model_config[k]
+
+    return model_config
+### End of insertion
+
+
+def list_model_configs() -> None:richard@thekiwis.netrichard@thekiwis.net
     """List all predefined model configs."""
     logger.info(model_configs.keys())
 
